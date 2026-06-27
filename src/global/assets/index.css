@@ -1,0 +1,139 @@
+/**
+ * @project MemoDevLab
+ * @file src/global/assets/index.css
+ * @description Estilos globales: fuentes, Mantine, Tailwind y variables de tema
+ * @author Guillermo Corredor
+ * @created 22/03/2026
+ *
+ * @overview
+ * Punto de entrada de estilos de la app. Orden: fuentes (Montserrat), Mantine core/dates,
+ * Tailwind, :root, resets y body. Tema (colores, fuentes) en theme.ts. Importado desde main vía @assets/index.css.
+ */
+
+/** @section Imports - fuentes, Mantine y Tailwind */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import "@mantine/core/styles.css";
+@import "@mantine/dates/styles.css";
+@import "@mantine/notifications/styles.css";
+@import "tailwindcss";
+
+/**
+ * @section @theme - Paleta de marca (colores del logo: morado #c953ea)
+ * Define la escala `brand` y REMAPEA la escala `red` al morado para que cualquier
+ * clase `red-*` heredada del template rinda con los colores del logo.
+ */
+@theme {
+  --color-brand-50: #fbf3fe;
+  --color-brand-100: #f6e2fc;
+  --color-brand-200: #eec6f9;
+  --color-brand-300: #e29df3;
+  --color-brand-400: #d878ef;
+  --color-brand-500: #c953ea;
+  --color-brand-600: #b23dd6;
+  --color-brand-700: #952cb4;
+  --color-brand-800: #7a2693;
+  --color-brand-900: #652077;
+
+  /* Remapeo rojo → morado (todo lo que era rojo ahora usa la marca) */
+  --color-red-50: #fbf3fe;
+  --color-red-100: #f6e2fc;
+  --color-red-200: #eec6f9;
+  --color-red-300: #e29df3;
+  --color-red-400: #d878ef;
+  --color-red-500: #d36fec;
+  --color-red-600: #c953ea;
+  --color-red-700: #b23dd6;
+  --color-red-800: #952cb4;
+  --color-red-900: #7a2693;
+}
+
+/** @section :root - variables de fuentes */
+:root {
+  --background: #fcfcfc;
+  --foreground: #5a5a5a;
+  --font-geist-sans: "Montserrat", sans-serif;
+  --font-geist-mono: monospace;
+}
+
+/** @section Resets - box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/** @section html, body, #root - dimensiones y márgenes */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+}
+
+/** @section body - fondo, tipografía y anti-aliasing */
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/** @section @layer base - reset de botones (prioridad Tailwind sobre Mantine) */
+@layer base {
+  button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+/** @section Mantine Overrides - Fix para textos deshabilitados invisibles */
+[data-disabled],
+:disabled {
+  opacity: 1 !important;
+}
+
+.mantine-Input-input:disabled,
+.mantine-Input-input[data-disabled],
+.mantine-Select-input:disabled,
+.mantine-Select-input[data-disabled],
+.mantine-PasswordInput-input:disabled,
+.mantine-PasswordInput-input[data-disabled],
+input:disabled,
+input[data-disabled] {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  opacity: 1 !important;
+  background-color: #f2f2f2 !important;
+  font-weight: 500 !important;
+}
+
+/* Evitar que el label se difumine */
+.mantine-InputWrapper-label[data-disabled],
+label[data-disabled] {
+  color: #525252 !important;
+  opacity: 1 !important;
+}
+
+/** @section Mantine Tabs - Estilo pill con estado activo azul */
+.mantine-Tabs-tab:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.mantine-Tabs-tab[data-active] {
+  background-color: var(--mantine-color-blue-0) !important;
+  color: var(--mantine-color-blue-7) !important;
+  font-weight: 700;
+}
+
+.mantine-Tabs-tab[data-active]:hover {
+  background-color: var(--mantine-color-blue-1) !important;
+  color: var(--mantine-color-blue-8) !important;
+}

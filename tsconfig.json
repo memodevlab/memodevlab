@@ -1,0 +1,31 @@
+/**
+ * @project MemoDevLab Web (Vite SSR)
+ * @file tsconfig.json
+ * @description Configuración raíz de TypeScript con referencias a proyectos
+ * @author Guillermo Corredor
+ * @created 03/04/2026
+ *
+ * @overview
+ * Este archivo configura las referencias de TypeScript para el proyecto MemoDevLab Web.
+ * Utiliza project references para separar la configuración de la aplicación (app)
+ * y la configuración de Node (vite.config, server.ts). No contiene compilerOptions propias.
+ */
+
+{
+  /**
+   * @property files
+   * @description Lista vacía para que el archivo actúe solo como contenedor de referencias
+   * @type {string[]}
+   */
+  "files": [],
+
+  /**
+   * @property references
+   * @description Referencias a los proyectos configurados (app y node)
+   * @type {Object[]}
+   */
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}

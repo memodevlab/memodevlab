@@ -1,0 +1,67 @@
+# @project MemoDevLab Web (Vite SSR)
+# @file .editorconfig
+# @description Configuración de EditorConfig para la consistencia del editor
+# @author Guillermo Corredor
+# @created 22/03/2026
+#
+# @overview
+# Este archivo configura las opciones de EditorConfig para el proyecto MemoDevLab Web (Vite SSR).
+# Define consistencia de indentación, formato de línea y charset en todos los editores.
+
+root = true
+
+# @property *
+# @description Configuración global para todos los archivos
+# @type {Object}
+[*]
+# @property indent_style
+# @description Estilo de indentación (espacios o tabs)
+# @type {string}
+indent_style = space
+# @property indent_size
+# @description Número de espacios por nivel de indentación
+# @type {number}
+indent_size = 2
+# @property end_of_line
+# @description Formato de fin de línea (lf, crlf, cr)
+# @type {string}
+end_of_line = lf
+# @property charset
+# @description Juego de caracteres del archivo
+# @type {string}
+charset = utf-8
+# @property trim_trailing_whitespace
+# @description Elimina espacios en blanco al final de las líneas
+# @type {boolean}
+trim_trailing_whitespace = true
+# @property insert_final_newline
+# @description Inserta una línea en blanco al final del archivo
+# @type {boolean}
+insert_final_newline = true
+
+# @property *.{js,jsx,ts,tsx,json}
+# @description Configuración específica para archivos de código
+# @type {Object}
+[*.{js,jsx,ts,tsx,json}]
+# @property max_line_length
+# @description Longitud máxima de línea para archivos de código
+# @type {number}
+max_line_length = 120
+
+# @property *.md
+# @description Configuración específica para archivos Markdown
+# @type {Object}
+[*.md]
+# @property trim_trailing_whitespace
+# @description No eliminar espacios en Markdown (para saltos de línea)
+# @type {boolean}
+trim_trailing_whitespace = false
+
+# @property *.yml
+# @description Configuración específica para archivos YAML
+# @type {Object}
+[*.yml]
+# @property indent_size
+# @description Número de espacios por nivel de indentación en YAML
+# @type {number}
+indent_size = 2

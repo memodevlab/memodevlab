@@ -1,0 +1,84 @@
+/**
+ * @project MemoDevLab Web (Vite SSR)
+ * @file tsconfig.jest.json
+ * @description Configuración de TypeScript para Jest (pruebas unitarias)
+ * @author Guillermo Corredor
+ * @created 22/03/2026
+ *
+ * @overview
+ * Este archivo configura las opciones del compilador TypeScript para el entorno
+ * de pruebas con Jest. Extiende tsconfig.app.json y adapta módulos a CommonJS
+ * para compatibilidad con Jest. Incluye tipos de Node, Jest y Vite.
+ */
+
+{
+  /**
+   * @property extends
+   * @description Configuración base que extiende (tsconfig.app.json)
+   * @type {string}
+   */
+  "extends": "./tsconfig.app.json",
+
+  /**
+   * @property compilerOptions
+   * @description Opciones del compilador TypeScript para Jest
+   * @type {Object}
+   */
+  "compilerOptions": {
+    /**
+     * @property module
+     * @description Sistema de módulos CommonJS (requerido por Jest)
+     * @type {string}
+     */
+    "module": "commonjs",
+
+    /**
+     * @property moduleResolution
+     * @description Estrategia de resolución de módulos para Node
+     * @type {string}
+     */
+    "moduleResolution": "node",
+
+    /**
+     * @property esModuleInterop
+     * @description Habilita interoperabilidad entre módulos CommonJS y ES
+     * @type {boolean}
+     */
+    "esModuleInterop": true,
+
+    /**
+     * @property allowSyntheticDefaultImports
+     * @description Permite imports por defecto desde módulos sin export default
+     * @type {boolean}
+     */
+    "allowSyntheticDefaultImports": true,
+
+    /**
+     * @property verbatimModuleSyntax
+     * @description Desactivado para permitir imports en entorno CommonJS de Jest
+     * @type {boolean}
+     */
+    "verbatimModuleSyntax": false,
+
+    /**
+     * @property noEmit
+     * @description No genera archivos de salida (Jest transpila en tiempo de ejecución)
+     * @type {boolean}
+     */
+    "noEmit": true,
+
+    /**
+     * @property types
+     * @description Tipos globales a incluir (Node, Jest, vite/client)
+     * @type {string[]}
+     */
+    "types": ["node", "jest", "vite/client"]
+  },
+
+  /**
+   * @property include
+   * @description Archivos y carpetas a incluir (src, jest.setup, jest.config)
+   * @type {string[]}
+   */
+  "include": ["src/**/*", "jest.setup.ts", "jest.config.ts"]
+}

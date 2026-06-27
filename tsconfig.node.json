@@ -1,0 +1,146 @@
+/**
+ * @project MemoDevLab Web (Vite SSR)
+ * @file tsconfig.node.json
+ * @description Configuración de TypeScript para archivos de Node (vite.config, server.ts)
+ * @author Guillermo Corredor
+ * @created 03/04/2026
+ *
+ * @overview
+ * Este archivo configura las opciones del compilador TypeScript para el código
+ * que se ejecuta en Node.js (vite.config.ts, server.ts, prerender.ts).
+ * Incluye tipos de Node y está optimizado para el entorno de configuración de Vite.
+ */
+
+{
+  /**
+   * @property compilerOptions
+   * @description Opciones del compilador TypeScript para Node
+   * @type {Object}
+   */
+  "compilerOptions": {
+    /**
+     * @property incremental
+     * @description Habilita compilación incremental para mejor rendimiento
+     * @type {boolean}
+     */
+    "incremental": true,
+
+    /**
+     * @property tsBuildInfoFile
+     * @description Ruta del archivo de caché incremental de compilación
+     * @type {string}
+     */
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+
+    /**
+     * @property target
+     * @description Especifica la versión de ECMAScript de salida
+     * @type {string}
+     */
+    "target": "ESNext",
+
+    /**
+     * @property lib
+     * @description Bibliotecas de TypeScript a incluir
+     * @type {string[]}
+     */
+    "lib": ["ESNext"],
+
+    /**
+     * @property module
+     * @description Sistema de módulos (ESNext para bundler)
+     * @type {string}
+     */
+    "module": "ESNext",
+
+    /**
+     * @property types
+     * @description Tipos globales a incluir (node para Node.js)
+     * @type {string[]}
+     */
+    "types": ["node"],
+
+    /**
+     * @property skipLibCheck
+     * @description Omite la comprobación de tipos en archivos de declaración
+     * @type {boolean}
+     */
+    "skipLibCheck": true,
+
+    /**
+     * @property moduleResolution
+     * @description Estrategia de resolución de módulos para bundler
+     * @type {string}
+     */
+    "moduleResolution": "bundler",
+
+    /**
+     * @property allowImportingTsExtensions
+     * @description Permite importar archivos con extensión .ts/.tsx
+     * @type {boolean}
+     */
+    "allowImportingTsExtensions": true,
+
+    /**
+     * @property verbatimModuleSyntax
+     * @description Requiere sintaxis explícita para imports/exports de tipos
+     * @type {boolean}
+     */
+    "verbatimModuleSyntax": true,
+
+    /**
+     * @property moduleDetection
+     * @description Fuerza la detección de archivos como módulos
+     * @type {string}
+     */
+    "moduleDetection": "force",
+
+    /**
+     * @property noEmit
+     * @description No genera archivos de salida (Vite procesa la config)
+     * @type {boolean}
+     */
+    "noEmit": true,
+
+    /**
+     * @property strict
+     * @description Habilita todas las opciones de comprobación de tipo estrictas
+     * @type {boolean}
+     */
+    "strict": true,
+
+    /**
+     * @property noUnusedLocals
+     * @description Reporta variables locales no utilizadas
+     * @type {boolean}
+     */
+    "noUnusedLocals": true,
+
+    /**
+     * @property noUnusedParameters
+     * @description Reporta parámetros no utilizados
+     * @type {boolean}
+     */
+    "noUnusedParameters": true,
+
+    /**
+     * @property noFallthroughCasesInSwitch
+     * @description Reporta fall-through en casos de switch
+     * @type {boolean}
+     */
+    "noFallthroughCasesInSwitch": true
+  },
+
+  /**
+   * @property include
+   * @description Archivos a incluir: Vite config, todo el código del servidor
+   * (server/**) y los tipos compartidos del entry-server (.ts sin JSX).
+   * @type {string[]}
+   */
+  "include": [
+    "vite.config.ts",
+    "server/**/*.ts",
+    "src/entry-server.types.ts",
+    "src/types/server.d.ts"
+  ]
+}

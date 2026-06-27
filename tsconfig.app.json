@@ -1,0 +1,158 @@
+/**
+ * @project MemoDevLab Web (Vite SSR)
+ * @file tsconfig.app.json
+ * @description Configuración de TypeScript para la aplicación React/Vite SSR
+ * @author Guillermo Corredor
+ * @created 03/04/2026
+ *
+ * @overview
+ * Este archivo configura las opciones del compilador TypeScript para el código
+ * de la aplicación (src/). Incluye soporte para React, DOM y Vite.
+ * Optimizado para modo bundler con Vite.
+ */
+
+{
+  /**
+   * @property compilerOptions
+   * @description Opciones del compilador TypeScript para la aplicación
+   * @type {Object}
+   */
+  "compilerOptions": {
+    /**
+     * @property tsBuildInfoFile
+     * @description Ruta del archivo de caché incremental de compilación
+     * @type {string}
+     */
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+
+    /**
+     * @property target
+     * @description Especifica la versión de ECMAScript de salida
+     * @type {string}
+     */
+    "target": "ESNext",
+
+    /**
+     * @property useDefineForClassFields
+     * @description Usa define para campos de clase según estándar ECMAScript
+     * @type {boolean}
+     */
+    "useDefineForClassFields": true,
+
+    /**
+     * @property lib
+     * @description Bibliotecas de TypeScript a incluir (ES2025, DOM, DOM.Iterable)
+     * @type {string[]}
+     */
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+
+    /**
+     * @property module
+     * @description Sistema de módulos (ESNext para bundler)
+     * @type {string}
+     */
+    "module": "ESNext",
+
+    /**
+     * @property types
+     * @description Tipos globales a incluir (vite/client para Vite)
+     * @type {string[]}
+     */
+    "types": ["vite/client"],
+
+    /**
+     * @property skipLibCheck
+     * @description Omite la comprobación de tipos en archivos de declaración
+     * @type {boolean}
+     */
+    "skipLibCheck": true,
+
+    /**
+     * @property moduleResolution
+     * @description Estrategia de resolución de módulos para bundler
+     * @type {string}
+     */
+    "moduleResolution": "bundler",
+
+    /**
+     * @property allowImportingTsExtensions
+     * @description Permite importar archivos con extensión .ts/.tsx
+     * @type {boolean}
+     */
+    "allowImportingTsExtensions": true,
+
+    /**
+     * @property verbatimModuleSyntax
+     * @description Requiere sintaxis explícita para imports/exports de tipos
+     * @type {boolean}
+     */
+    "verbatimModuleSyntax": true,
+
+    /**
+     * @property moduleDetection
+     * @description Fuerza la detección de archivos como módulos
+     * @type {string}
+     */
+    "moduleDetection": "force",
+
+    /**
+     * @property noEmit
+     * @description No genera archivos de salida (Vite se encarga del bundling)
+     * @type {boolean}
+     */
+    "noEmit": true,
+
+    /**
+     * @property jsx
+     * @description Transformación JSX para React
+     * @type {string}
+     */
+    "jsx": "react-jsx",
+
+    /**
+     * @property strict
+     * @description Habilita todas las opciones de comprobación de tipo estrictas
+     * @type {boolean}
+     */
+    "strict": true,
+
+    /**
+     * @property noUnusedLocals
+     * @description Reporta variables locales no utilizadas
+     * @type {boolean}
+     */
+    "noUnusedLocals": true,
+
+    /**
+     * @property noUnusedParameters
+     * @description Reporta parámetros no utilizados
+     * @type {boolean}
+     */
+    "noUnusedParameters": true,
+
+    "noFallthroughCasesInSwitch": true,
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@global/*": ["src/global/*"],
+      "@assets/*": ["src/global/assets/*"],
+      "@images/*": ["src/global/assets/images/*"],
+      "@sounds/*": ["src/global/assets/sounds/*"],
+      "@theme/*": ["src/global/assets/theme/*"],
+      "@atoms/*": ["src/global/atoms/*"],
+      "@hooks/*": ["src/global/hooks/*"],
+      "@i18n/*": ["src/global/i18n/*"],
+      "@navigation/*": ["src/global/navigation/*"],
+      "@store/*": ["src/global/store/*"],
+      "@home/*": ["src/home/*"]
+    }
+  },
+
+  /**
+   * @property include
+   * @description Archivos y carpetas a incluir en la compilación (código de la app)
+   * @type {string[]}
+   */
+  "include": ["src"]
+}

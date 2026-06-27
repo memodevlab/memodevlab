@@ -1,0 +1,60 @@
+# @project MemoDevLab Web (Vite SSR)
+# @file .gitignore
+# @description Archivos y directorios ignorados por Git
+# @author Guillermo Corredor
+# @created 03/04/2026
+#
+# @overview
+# Define los patrones de archivos que deben ser ignorados por el sistema de control
+# de versiones Git, incluyendo dependencias, compilación, entornos y logs.
+
+# 1. Dependencias
+node_modules
+package-lock.json
+
+# 2. Compilación (Vite SSR: client + server builds)
+dist
+dist-ssr
+server.mjs
+
+# 3. Entorno
+.env
+.env.local
+.env.*.local
+*.local
+
+# 4. Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# 5. Cobertura de pruebas
+coverage
+
+# 6. Caché
+.eslintcache
+*.tsbuildinfo
+
+# 7. Editor y herramientas
+.vscode/*
+!.vscode/extensions.json
+.idea
+.claude
+.cursor
+.antigravity
+.antigravity_tools
+.sublime-project
+.sublime-workspace
+*.swp
+*.swo
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+.agent

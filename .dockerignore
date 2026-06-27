@@ -1,0 +1,21 @@
+# Dependencias e instalables (se reinstalan en el build)
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Artefactos de build (se regeneran)
+dist
+
+# Entorno y secretos (se inyectan por el orquestador, NO se hornean en la imagen)
+.env
+.env.*
+
+# Control de versiones y editor
+.git
+.gitignore
+.vscode
+.idea
+.DS_Store
+
+# Docs/infra que no afectan el runtime
+README.md

@@ -1,0 +1,27 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+build
+
+# Cache
+.eslintcache
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+
+# IDE
+.vscode
+.idea
+
+# Documentation that shouldn't be formatted
+CHANGELOG.md
+LICENSE
+
+# Specific exclusions
+vendor
+coverage
