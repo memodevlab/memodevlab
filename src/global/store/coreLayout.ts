@@ -169,6 +169,14 @@ export const coreLayout = create<LayoutState & LayoutActions>()(
     {
       name: STORAGE_KEY,
       storage: createJSONStorage(() => localStorage),
+      /**
+       * skipHydration: NO leer localStorage en la creación del store.
+       * En SSR el servidor renderiza con los valores por defecto (locale "es"); si el
+       * cliente leyera localStorage en el primer render, el árbol diferiría del servidor
+       * y React abortaría la hidratación (pantalla en blanco). La rehidratación se dispara
+       * manualmente tras el montaje (App.tsx → coreLayout.persist.rehydrate()).
+       */
+      skipHydration: true,
       /** Persistencia selectiva: solo guardar preferencias críticas del usuario */
       partialize: (state) => ({
         isOpen: state.isOpen,

@@ -79,7 +79,13 @@ export default function ContactPage() {
     try {
       const res = await fetch(CONTACT_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json", apikey: ANON_KEY },
+        headers: {
+          "Content-Type": "application/json",
+          apikey: ANON_KEY,
+          // La anon key es un JWT válido → pasa el gateway de Supabase aunque la
+          // función esté con verify_jwt activado. La función igual usa service_role dentro.
+          Authorization: `Bearer ${ANON_KEY}`
+        },
         body: JSON.stringify({
           full_name: form.name.trim(),
           email: form.email.trim() || undefined,
