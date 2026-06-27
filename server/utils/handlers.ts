@@ -65,19 +65,23 @@ export async function handleCsr(url: string, reply: FastifyReply, state: ServerS
  */
 export async function handleSsg(url: string, reply: FastifyReply, state: ServerState): Promise<string> {
   if (isProduction) {
-    const staticPath =
-      url === "/"
-        ? path.resolve(ROOT_DIR, "dist/client/index.html")
-        : path.resolve(ROOT_DIR, `dist/client${url}/index.html`);
+    /** Ruta relativa a la raíz de fastifyStatic (dist/client), sin query ni barras sobrantes */
+    const cleanUrl = url.split("?")[0];
+    const relPath =
+      cleanUrl === "/" ? "index.html" : `${cleanUrl.replace(/^\/+/, "").replace(/\/+$/, "")}/index.html`;
+    const staticPath = path.resolve(ROOT_DIR, "dist/client", relPath);
 
     if (fs.existsSync(staticPath)) {
-      reply
-        .header(
-          "Cache-Control",
-          `public, max-age=${CACHE_SSG_MAX_SECONDS}, stale-while-revalidate=${CACHE_SSG_STALE_SECONDS}`
-        )
-        .type("text/html")
-        .send(fs.readFileSync(staticPath, "utf-8"));
+      /**
+       * Servir vía @fastify/static (reply.sendFile), IGUAL que el home. Enviar el string
+       * con reply.send() hacía que @fastify/compress corrompiera la respuesta gzip (body
+       * vacío / "premature close"); sendFile hace streaming + compresión correctos.
+       */
+      reply.header(
+        "Cache-Control",
+        `public, max-age=${CACHE_SSG_MAX_SECONDS}, stale-while-revalidate=${CACHE_SSG_STALE_SECONDS}`
+      );
+      await reply.sendFile(relPath);
       return "static";
     }
   }
